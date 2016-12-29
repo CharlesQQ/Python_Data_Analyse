@@ -1,0 +1,4 @@
+APPNAME=sa
+SHELL=/data3/sa/salt/scripts/containner/cron_bash.sh
+0 */2 * * * root /data3/sa/salt/scripts/get_container_name.sh
+* * * * * root /data3/sa/salt/scripts/zabbix_sender_script.py

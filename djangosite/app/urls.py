@@ -6,6 +6,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'',views.welcome),
+    # url(r'',views.welcome),
     url(r'moment_input',views.moment_input),
 ]

@@ -7,7 +7,6 @@ from forms import MomentForm
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-
 def welcome(request):
     return HttpResponse("<h1>Welcome to my site</h1>")
 

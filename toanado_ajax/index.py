@@ -9,15 +9,26 @@ import tornado.web
 class LoginHandler(tornado.web.RequestHandler):
 
     def get(self, *args, **kwargs):
-        self.render('login.html')
+        self.render('login1.html')
 
     def post(self, *args, **kwargs):
-        pass
+        dic = {'status':True,"message":""}
+        print(self.get_argument('username'))
+        user = (self.get_argument('username'))
+        print(self.get_argument('password'))
+        pwd = (self.get_argument('password'))
+        if user == 'alex' and pwd =='123':
+            pass
+        else:
+            dic['status'] = False
+            dic['message'] = "用户名或者密码错误"
+        import json
+        self.write(json.dumps(dic))
 
 
 settings = {
     "template_path": "views",  # 模版路径的配置
-    # "static_path":'statics',          #静态文件配置
+    "static_path":'static',          #静态文件配置
 
 }
 

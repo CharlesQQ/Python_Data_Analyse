@@ -25,7 +25,7 @@ __author__ = 'Charles Chang'
 
 class Shape(object):
     def draw(self):
-        raise NotImplementedError
+        raise NotImplementedError     #子类不实现，会报错
 
 
 class Circle(Shape):

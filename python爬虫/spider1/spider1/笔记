@@ -31,3 +31,11 @@
         nid      加密值(索引)      原来的值
         new_url =>加密
     内容格式化(功能分类)
+
+    如何自动递归: Spider源码
+
+    在paser函数中写写一个yield
+        def start_requests(self):
+        for url in self.start_urls:
+            yield self.make_requests_from_url(url)
+

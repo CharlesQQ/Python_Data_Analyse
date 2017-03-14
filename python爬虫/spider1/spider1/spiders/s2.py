@@ -13,6 +13,7 @@ class XiaoHuarSpider(scrapy.spiders.Spider):
         "http://www.xiaohuar.com/hua/",
     ]
 
+
     def parse(self, response):                 #回调函数，自动执行
         # print(response, type(response))
         # from scrapy.http.response.html import HtmlResponse
@@ -38,6 +39,13 @@ class XiaoHuarSpider(scrapy.spiders.Spider):
             if srcs and names and schools:
                 try:
                     print names[0],schools[0],srcs[0]
+                    from spider1 import items
+                    obj = items.Spider1Item()
+                    obj['name']=names[0]
+                    obj['school']=schools[0]
+                    obj['src']=srcs[0]
+                    yield obj
+                    """
                     ab_src = "http://www.xiaohuar.com" + srcs[0]
                     #file_name = names[0].encode("utf-8")+".jpg"
                     file_name = str(i)+".jpg"
@@ -48,5 +56,6 @@ class XiaoHuarSpider(scrapy.spiders.Spider):
                     #     file_name = "%s_%s.jpg" % (school[0].encode('utf-8'), name[0].encode('utf-8'))
                     #     file_path = os.path.join("/Users/wupeiqi/PycharmProjects/beauty/pic", file_name)
                     #     urllib.urlretrieve(ab_src, file_path)
+                """
                 except Exception as e:
                     print e

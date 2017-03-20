@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+<input type="button" name="btn" id="btn" value="按钮" />
+<div id="box"></div>
+    <!--
+    需求：
+    1、点击按钮，背景变为黄色;
+    步骤:
+    1、拿到按钮
+       document.getElementByid("btn")
+    2、给按钮添加点击事件
+      按钮.onclick= function(){
+      }
+      修改属性
+      元素.style.样式=值;
+    -->
+<script>
+    document.getElementById('btn').onclick = function(){
+      document.getElementById('btn').style.background='red';
+    };
+</script>
+</body>
+</html>

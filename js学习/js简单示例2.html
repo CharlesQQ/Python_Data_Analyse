@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+<input type="button" name="btn" id="btn" value="按钮" />
+<div id="box"></div>
+    <!--
+    需求：
+    1、点击按钮，让div的高度和宽度变化;
+    步骤:
+    1、拿到按钮
+       document.getElementByid("btn")
+    2、给按钮添加点击事件
+        1、拿到要改的元素
+        document.getElementById('box')
+        2、修改它的宽度和高度
+          div.style.width=值
+          div.style.height=值
+      按钮.onclick= function(){
+      }
+      修改属性
+      元素.style.样式=值;
+    -->
+<script>
+    document.getElementById('btn').onclick = function(){
+      document.getElementById('box').style.width = '200px';
+      document.getElementById('box').style.height = '200px';
+
+    };
+</script>
+</body>
+</html>

@@ -23,3 +23,4 @@ data = pd.merge(pd.merge(ratings,users),movies)
 print data
 print "========="
 print data.ix[0]
+

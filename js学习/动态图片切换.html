@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img{
+            display: block;
+        }
+    </style>
+    <script>
+        /*
+        *
+        * 需求:点击下一张按钮，让图片切换成下一张图
+        *       点击上一张，让图片切换成上一张图
+        * 分析:
+        *   1、获取到下一张按钮
+        *   2、给按钮添加点击事件
+        *       a、用属性操作的方法去修改图片的src;
+        *       b、把数字存到一个变量里，点击下一张，就让这个变量加1.用字符串拼接的方法去修改图片的src属性;
+        *
+        *  累加
+        *     n=n+1
+        *     n+=1;
+        *     n++;
+        * */
+        window.onload= function () {
+            var next=document.getElementById('next');
+            var prev=document.getElementById('prev');
+            var pic=document.getElementById("pic");
+            var n=1;
+            //下一张按钮点击事件
+            next.onclick=function(){
+                //点击一下n加1
+                //n=n+1;
+                //n+=1;
+                n++;
+                console.log(n);
+                if(n>4){
+                    n=4;    //总共4张图片
+                }
+                pic.src=n+'.jpg';
+
+            };
+            //上一张按钮点击事件
+            prev.onclick= function () {
+                n--;
+                if(n<1){
+                    n=1;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<input type="button" id="prev" value="上一张" />
+<input type="button" id="text" value="下一张" />
+<img src="1.jpg"  id="pic" alt="" />
+</body>
+</html>

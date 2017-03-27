@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        /*
+        *
+        * innerHTML
+        *  如果标签对当中有其他的标签，一样会拿得到
+        *
+        *  在给innerHTML设置值的时候，如果这个值里面有html标签，那放到网页中，会把它解析成为一个真正的html标签
+        * */
+        window.onload= function () {
+          var btn=document.getElementById('btn');
+            var box=document.getElementById('box');
+            btn.onclick= function () {
+                console.log(box.innerHTML);
+                //设置
+                box.innerHTML='<span>kaiven<span/>';
+            }
+        };
+    </script>
+    <input type="button" id="btn" value="按钮" />
+    <div id="box"><p>标题</p>这里是一段文字</div>
+</body>
+</html>

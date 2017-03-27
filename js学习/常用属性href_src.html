@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+    * href 连接的地址
+    * src  图片的地址
+    *
+    * href与src取到的是绝对地址,不是属性里的值
+    * 切记不要拿href与src取到的值去做判断
+    * */
+    window.onload= function () {
+        var pic = document.getElementById('pic');
+        var link = document.getElementById('link');
+        console.log(pic.src);  //http://localhost:63342/Python_Data_Analyse1/js%E5%AD%A6%E4%B9%A0/11.jpg
+        console.log(link.href);  //http://localhost:63342/Python_Data_Analyse1/js%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7href_src.html#
+    }
+</script>
+<img id="pic" src="1.jpg"/>
+<a href="#" id="link">js</a>
+</body>
+</html>

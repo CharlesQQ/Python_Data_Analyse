@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="btn" value="按钮"  style="width: 50px; height: 50px; background: #ff0000;font-size: 20px" />
+<script>
+    /*
+    * 属性操作方式:
+    * 1、.表示的意思
+    *     元素.属性名
+    *     如果属性是单一属性，用点操作符是取不到的，而且还会报错
+    *     如果想要用点操作符获取带横杠的属性，那首先要把横杠去掉，然后把横杠后面的第一个字母大写
+    * 2、[] 表示的意思
+    *     如果属性中带横杠，用[]的方式去操作属性
+    *     []既可以操作符合变量命名规则的属性，也可以操作不符合变量命名规则的属性
+    *
+    * */
+    var btn=document.getElementById('btn');
+    btn.onclick=function(){
+        //alert(btn.type); //button
+        //console.log(btn.id);  //btn
+        console.log(btn.value);   //按钮
+
+        btn.value='小按钮';   //修改属性
+        //console.log(btn.style.font-size);
+        console.log(btn.style['font-size']);  //20px
+
+        console.log(btn.style.fontSize);
+        console.log(btn['id']);  //btn
+        /*
+        * font-size   这个属性不能用点直接去获取，因为js不认识横杠
+        *
+        * */
+    }
+</script>
+</body>
+</html>

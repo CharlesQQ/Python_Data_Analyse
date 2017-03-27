@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+<input type="button" name="btn" id="btn" value="按钮" />
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    document.getElementById('btn').onclick = function(){
+      box.style.width = '200px';
+      box.style.height = '200px';
+      box.style.margin='10px';
+        box.style.padding='20px';
+
+    };
+</script>
+</body>
+</html>

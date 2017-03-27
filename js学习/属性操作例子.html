@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #ff0000;
+        }
+    </style>
+
+    <script>
+        /*
+        * 需求:
+        *   点击按钮获取输入框里的属性名称与属性值，对div进行设置
+        *
+        * 分析:
+        *     1、获取输入框、按钮、box
+        *     2、给按钮添加点击事件
+        *     3、获取到输入框里的内容
+        *     4、改变box的样式
+        * */
+        window.onload=function(){
+            var text1=document.getElementById('text1');
+            var text2=document.getElementById('text2');
+            var btn=document.getElementById('btn');
+            var box=document.getElementById('box');
+
+            btn.onclick=function(){
+                var name=text1.value;
+                var val=text2.value;
+
+                console.log(name,val);
+                /*
+                * 点操作属性的时候，后面只能跟真正的属性名称，不能跟变量名
+                * []操作属性的时候，里面可以放属性名称和变量名，如果放的是属性名，需要加引号，如果放的变量名，不需加引号;
+                *   如:box.style['width']=val;
+                *
+                * */
+                box.style[name]=val;
+
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="text1" value="" />
+    <input type="text" id="text2" value="" />
+    <input type="button" id="btn" value="按钮" />
+    <div id="box"></div>
+</body>
+</html>

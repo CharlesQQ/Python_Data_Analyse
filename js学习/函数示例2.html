@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #ff0000;
+        }
+    </style>
+    <script>
+        /*
+        * 需求:点击任何一个按钮，改变div的宽度，高度、margin、padding、背景色等属性
+        *
+        * 分析:
+        *     1、获取元素(两个按钮、box)
+        *     2、给两个按钮添加点击事件
+        *         在事件里修改box的属性
+        * */
+        window.onload = function(){
+            var btn1=document.getElementById('btn1');
+            var btn2=document.getElementById('btn2');
+            var box = document.getElementById('box');
+
+            //给按钮添加点击事件
+            btn1.onclick= function (){
+                //点击后，要修改box的属性
+                setStyle();
+            };
+            //给按钮2添加同样的事情
+            btn2.onclick= function (){
+                //点击后，要修改box的属性
+                setStyle();
+            };
+
+            function setStyle(){
+                box.style.width='200px';
+                box.style.height='200px';
+                box.style.margin='10px';
+                box.style.padding='20px';
+                box.style.background='green';
+            }
+        };
+    </script>
+</head>
+<body>
+<input type="button" id="btn1" value="按钮1" />
+<input type="button" id="btn2" value="按钮2" />
+<div id="box"></div>
+</body>
+</html>

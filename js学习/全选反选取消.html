@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input id="c1" type="checkbox">
+    <input id="c2" type="checkbox" checked="checked">
+    <div>
+        <input type="button" value="全选" onclick="SelectAll();" />
+        <input type="button" value="取消" onclick="ClearAll();" />
+        <input type="button" value="反选" onclick="RevaseAll();" />
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+        </table>
+    </div>
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+    function SelectAll(){
+         //  $('table input[type="checkbox"]');   找到左右的input.checkbox
+//           $('table :checkbox')
+        $('table :checkbox').prop('checked',true);
+    }
+
+    function ClearAll(){
+        $('table :checkbox').prop('checked',false);
+    }
+
+    function RevaseAll(){
+    //   var checkboxlist = $('table :checkbox');
+        $('table :checkbox').each(function(){
+            //每一个循环都会执行该方法体
+     //      $(this);表示当前循环的元素
+            var isChecked = $(this).prop('checked');
+            if(isChecked){
+                $(this).prop('checked',false);
+            }else{
+                $(this).prop('checked',true);
+            }
+        })
+    }
+</script>
+</body>
+</html>

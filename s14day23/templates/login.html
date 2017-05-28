@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="fm">
+    {% csrf_token %}
+    <p><input type="text" name="username"></p>
+    <p><input type="password" name="password"></p>
+    <a id="submit">提交</a>
+</form>
+
+<script src="/static/jquery-3.2.1.min.js"></script>
+<script>
+    $(function () {
+        $('#submit').click(function () {
+            $.ajax({
+                url: '/login.html',
+                type:'POST',
+                data:$('#fm').serialize(),
+                success:function (arg) {
+                    console.log(arg);
+                    arg  =  JSON.parse(arg);
+                    console.log(arg);
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

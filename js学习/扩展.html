@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        $.extend({
+            'test':function () {
+                return 'this is a test';
+            }
+        });
+        var v = $.test();
+        alert(v);
+
+        $.fn.extend({
+            'test2':function () {
+                return 'test2';
+            }
+        });
+        var v1 = $('#i1').test2();
+        alert(v1);
+
+    </script>
+</body>
+</html>

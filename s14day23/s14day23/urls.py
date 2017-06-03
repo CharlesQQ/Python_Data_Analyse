@@ -17,14 +17,18 @@ from django.conf.urls import url
 from django.contrib import admin
 from app01.views import test
 from app01.views import account
-from app01.views import views
+from app01.views import views as view
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login.html$', account.login),
     url(r'^index/$', test.register),
-    url(r'^index1/$', views.index),
-    url(r'^user_list/', views.user_list),
-    url(r'^edit-(\d+)', views.user_edit),
+    url(r'^index1/$', view.index),
+    url(r'^user_list/', view.user_list),
+    url(r'^edit-(\d+)', view.user_edit),
+    url(r'^ajax/$', view.ajax),
+    url(r'^ajax_json/$', view.ajax_json),
+    url(r'^upload/$', view.upload),
+    url(r'^upload_file/$', view.upload_file),
 ]

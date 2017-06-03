@@ -111,3 +111,16 @@ def ajax_json(request):
 
 def upload(request):
     return render(request,'upload.html')
+
+def upload_file(request):
+    username = request.POST.get('username')
+    fa = request.FILES.get('fa')
+    print(request.POST)
+    print(username,fa)
+    with open(fa.name,'wb') as f:
+        for item in fa.chunks():
+            f.write(item)
+    ret = {'code': True, 'data': request.POST.get('username')}
+    import json
+
+    return HttpResponse(json.dumps(ret))

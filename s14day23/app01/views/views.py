@@ -117,10 +117,11 @@ def upload_file(request):
     fa = request.FILES.get('fa')
     print(request.POST)
     print(username,fa)
-    with open(fa.name,'wb') as f:
+    import os
+    img_path = os.path.join('static/image',fa.name)
+    with open(img_path,'wb') as f:
         for item in fa.chunks():
             f.write(item)
-    ret = {'code': True, 'data': request.POST.get('username')}
+    ret = {'code': True, 'data': img_path}
     import json
-
     return HttpResponse(json.dumps(ret))

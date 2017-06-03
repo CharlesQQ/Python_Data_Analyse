@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .upload{
+            display: inline-block;padding: 10px;
+            background-color: brown;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:0;
+            right:0;
+            z-index: 90;
+        }
+
+        .file{
+            width: 100px;height: 50px;opacity: 0;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:0;
+            right:0;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative;width: 100px;height: 50px;">
+        <input  class="file" type="file" id="fa" name="af" />
+        <a class="upload">上传</a>
+    </div>
+    <input type="button" value="提交xhr" onclick="xhrSubmit();" />
+    <input type="button" value="提交jquery" onclick="jqSubmit();" />
+    <hr/>
+    <form action="/upload_file/" method="POST" enctype="multipart/form-data" target="ifm1">
+        <iframe  id="ifm1" name="ifm1"  style="display: none;"></iframe>
+        <input type="file" name="fa">
+        <input type="submit" onclick="iframeSubmit();"  value="form提交" />
+    </form>
+</body>
+</html>
+<script src="/static/jquery-3.2.1.min.js"></script>
+<script>
+    function xhrSubmit() {
+        var file_obj = document.getElementById('fa').files[0];
+
+
+        var fd = new FormData();
+        fd.append('username','root');
+        fd.append('fa',file_obj);
+        var xhr = new XMLHttpRequest();
+            xhr.open('POST','/upload_file/',true);     /*true表示是否异步*/
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState == 4){
+                    //数据接收完毕
+                    console.log(xhr.responseText);
+                    var obj = JSON.parse(xhr.responseText);
+                    console.log(obj);
+                }
+            };
+            xhr.send(fd);
+    }
+
+    function jqSubmit() {
+        var file_obj = document.getElementById('fa').files[0];
+        var fd = new FormData();
+        fd.append('username','root');
+        fd.append('fa',file_obj);
+        $.ajax({
+            url :'/upload_file/',
+            type: 'POST',
+            data: fd,
+            processData:false,  //tell jquery not to process the data
+            contentType:false,   //tell jquery not set contenttype
+            success: function (arg,a1,a2) {
+                console.log(arg);
+                console.log(a1);
+                console.log(a2);
+            }
+
+        })
+    }
+    
+    function iframeSubmit() {
+        
+    }
+</script>

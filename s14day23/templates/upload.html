@@ -36,8 +36,8 @@
     <hr/>
     <form id="fm1" action="/upload_file/" method="POST" enctype="multipart/form-data" target="ifm1">
         <iframe  id="ifm1" name="ifm1"  style="display: none;"></iframe>
-        <input type="file" name="fa" onchange="changeUpload();"/>
-{#        <input type="submit" onclick="iframeSubmit();"  value="form提交" />#}
+        <input type="file" name="fa" onchange="changeUpload();"/>    //使用js提交
+{#        <input type="submit" onclick="iframeSubmit();"  value="form提交" />#}   //使用form提交
     </form>
     <div id="preview"></div>
 </body>

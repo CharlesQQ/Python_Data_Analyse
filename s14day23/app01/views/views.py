@@ -13,6 +13,9 @@ from  app01 import models
 
 class UserInfoModelForm(forms.ModelForm):
 
+    is_rmb = Ffield.CharField(        #自定义额外的字段,可以实现一个月内免登录的功能(不需要写数据库)
+        widget=Fwidgets.CheckboxInput())
+
     class Meta:
         model = models.UserInfo1    #记住:每一行末尾都不要加逗号
         fields = '__all__'
@@ -41,6 +44,10 @@ class UserInfoModelForm(forms.ModelForm):
             # 'email':Ffield.URLField
         }
         # localized_fields = ('ctime')   #哪些字段做本地化
+
+    def clean_username(self):    #钩子和form相同
+        old = self.cleaned_data['username']
+        return old
 
 class UserInfo1Form(forms.Form):
     username = Ffield.CharField(max_length=32)
@@ -90,3 +97,17 @@ def user_edit(request,nid):
         else:
             print(mf.errors.as_json)
         return render(request,'user_edit.html',{'mf':mf,'nid':nid})
+
+def ajax(request):
+    return render(request,'ajax.html')
+
+def ajax_json(request):
+    print(request.POST)
+    import time
+    time.sleep(3)
+    ret = {'code':True,'data':request.POST.get('username')}
+    import json
+    return HttpResponse(json.dumps(ret))
+
+def upload(request):
+    return render(request,'upload.html')

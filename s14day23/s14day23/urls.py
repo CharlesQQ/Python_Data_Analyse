@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^ajax_json/$', view.ajax_json),
     url(r'^upload/$', view.upload),
     url(r'^upload_file/$', view.upload_file),
+    url(r'article-(?P<article_type_id>\d+)-(?P<category_id>\d+).html',view.article,name='article')   #组合搜索条件
 ]

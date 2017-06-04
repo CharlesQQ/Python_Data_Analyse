@@ -133,7 +133,7 @@ def article(request,*args,**kwargs):
     所有在模板中查询的条件(if else判断，都可以放置到simple tag中，这样可以显得简洁一些)
     :param request:
     :param args:
-    :param kwargs: 
+    :param kwargs:
     :return:
     """
     print(kwargs)   #{'article_type_id': '1', 'category_id': '2'}
@@ -150,6 +150,7 @@ def article(request,*args,**kwargs):
             condition[k] = v
     print(condition,'----')
     article_type_list =models.ArticleType.objects.all()
+    #article_type_list =models.ArticleType.type_chioce   #在文章内类型不是很多的时候，可以保存早内存中；查询到的结果是元素,在模板中循环的时候，使用元祖的第一个元素(索引)来显示;
     category_list = models.Category.objects.all()
     # result = models.Article.objects.filter(category_id=1,article_type_id=2)
     result = models.Article.objects.filter(**condition)

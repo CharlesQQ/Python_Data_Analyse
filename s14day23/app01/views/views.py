@@ -125,3 +125,36 @@ def upload_file(request):
     ret = {'code': True, 'data': img_path}
     import json
     return HttpResponse(json.dumps(ret))
+
+
+def article(request,*args,**kwargs):
+    """
+    两个查询条件:根据当前url，保留其另外一个条件的查询的参数
+    所有在模板中查询的条件(if else判断，都可以放置到simple tag中，这样可以显得简洁一些)
+    :param request:
+    :param args:
+    :param kwargs: 
+    :return:
+    """
+    print(kwargs)   #{'article_type_id': '1', 'category_id': '2'}
+    from django.urls import reverse
+    url = reverse('article',kwargs=kwargs)    #生成url
+    print(url)
+    condition = {}
+    for k,v in kwargs.items():
+        kwargs[k]=int(v)
+    for k,v in kwargs.items():
+        if v == 0:    #当v为0时，查询的字典为空，表示显示全部内容
+            pass
+        else:
+            condition[k] = v
+    print(condition,'----')
+    article_type_list =models.ArticleType.objects.all()
+    category_list = models.Category.objects.all()
+    # result = models.Article.objects.filter(category_id=1,article_type_id=2)
+    result = models.Article.objects.filter(**condition)
+    return render(request,'article.html',{'result':result,
+                                          'article_type_list':article_type_list,
+                                          'category_list':category_list,
+                                          'arg_dict':kwargs
+                                          })

@@ -150,7 +150,7 @@ def article(request,*args,**kwargs):
             condition[k] = v
     print(condition,'----')
     article_type_list =models.ArticleType.objects.all()
-    #article_type_list =models.ArticleType.type_chioce   #在文章内类型不是很多的时候，可以保存早内存中；查询到的结果是元素,在模板中循环的时候，使用元祖的第一个元素(索引)来显示;
+    #article_type_list =models.ArticleType.type_chioce   #在文章内类型不是很多的时候，可以保存到内存中；查询到的结果是元素,在模板中循环的时候，使用元祖的第一个元素(索引)来显示;
     category_list = models.Category.objects.all()
     # result = models.Article.objects.filter(category_id=1,article_type_id=2)
     result = models.Article.objects.filter(**condition)

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>后台获取的结果</h1>
+    {{ result }}
+    <h1>js获取的结果</h1>
+    <input type="button" value="获取数据" onclick="getContent();">
+    <div id="container"></div>
+    <script src="/static/jquery-3.2.1.min.js"></script>
+    <script>
+        function getContent1() {
+            /*
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET','http://php.weather.sina.com.cn/xml.php?city=%B1%B1%BE%A9&password=DJOYnieT8234jlsK&day=0');
+            xhr.onreadystatechange = function () {
+                console.log(xhr.responseText);
+            };
+            xhr.send()
+            */
+            var tag = document.createElement('script');
+            tag.src = 'http://www.jxntv.cn/data/jmd-jxtv2.html?callback=list_=145376870403';   /*在创建src属性的时候，就会发送请求*/
+            document.head.appendChild(tag);
+            document.head.removeChild(tag);
+        }
+
+        function list(arg) {
+            console.log(arg);
+        }
+
+        function getContent() {
+            $.ajax({
+                url : 'http://www.jxntv.cn/data/jmd-jxtv2.html?callback=list_=145376870403',
+                type : 'POST',
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                jsonpCallback:'list'
+            })
+        }
+
+
+    </script>
+</body>
+</html>

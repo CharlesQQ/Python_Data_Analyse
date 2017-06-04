@@ -18,7 +18,7 @@ from django.contrib import admin
 from app01.views import test
 from app01.views import account
 from app01.views import views as view
-
+from app02 import views as a2
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^ajax_json/$', view.ajax_json),
     url(r'^upload/$', view.upload),
     url(r'^upload_file/$', view.upload_file),
-    url(r'article-(?P<article_type_id>\d+)-(?P<category_id>\d+).html',view.article,name='article')   #组合搜索条件
+    url(r'article-(?P<article_type_id>\d+)-(?P<category_id>\d+).html',view.article,name='article'),   #组合搜索条件
+    url(r'req/',a2.req),
 ]

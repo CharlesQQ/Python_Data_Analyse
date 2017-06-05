@@ -124,7 +124,7 @@ def add_article(request):
                 tags = form.cleaned_data.pop('tags')
                 content = form.cleaned_data.pop('content')
                 print(content)
-                content = XSSFilter().process(content)
+                content = XSSFilter().process(content)     #每一个用户请求到来的时候，都需要实例化这个类，而这个实例化的对象每次都一样,为了节省内存，使用单例模式
                 form.cleaned_data['blog_id'] = request.session['user_info']['blog__nid']
                 obj = models.Article.objects.create(**form.cleaned_data)
                 models.ArticleDetail.objects.create(content=content, article=obj)
